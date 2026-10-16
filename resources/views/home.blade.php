@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#12112f" />
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
     <meta name="description" content="{{ __('home.meta_description') }}" />
     <title>{{ __('home.title') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
