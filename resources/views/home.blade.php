@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ app()->getLocale() === 'bisaya' ? 'ceb' : 'en' }}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#12112f" />
-    <meta name="description" content="We buy land in General Santos City and move quickly. Tell us about your property." />
-    <title>We Buy Land Quickly | General Santos City</title>
+    <meta name="description" content="{{ __('home.meta_description') }}" />
+    <title>{{ __('home.title') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body style="--hero-image: url('{{ asset('images/bg-hero.jpg') }}')">
@@ -16,11 +16,17 @@
           <img class="brand-logo" src="{{ asset('images/Great-Logo.png') }}" alt="GREAT Land PH" />
         </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#about">About</a><a href="#properties">What We Buy</a
-          ><a href="#process">Our Process</a
-          ><a class="nav-cta" href="#contact"
-            >Contact Us <span class="arrow">↗</span></a
-          >
+          <a href="#about">{{ __('home.nav_about') }}</a>
+          <a href="#properties">{{ __('home.nav_properties') }}</a>
+          <a href="#process">{{ __('home.nav_process') }}</a>
+          <label class="language-picker">
+            <select aria-label="{{ __('home.language_label') }}" name="language" id="language-select">
+              <option style="color:#000" value="bisaya" @selected(app()->getLocale() === 'bisaya')>Bisaya</option>
+              <option style="color:#000" value="en" @selected(app()->getLocale() === 'en')>English</option>
+            </select>
+          </label>
+          <a class="nav-cta" href="#contact">{{ __('home.nav_contact') }} <span class="arrow">↗</span></a>
+          
         </nav>
       </div>
     </header>
@@ -28,25 +34,20 @@
       <section class="hero" id="home">
         <div class="wrap">
           <div class="hero-content">
-            <div class="eyebrow">Pagpalit og Yuta · General Santos City</div>
-            <h1>Yuta Nimo, Atong Hisgotan! Presyo Nimo, Atong Sabutan!</h1>
+            <div class="eyebrow">{{ __('home.hero_eyebrow') }}</div>
+            <h1>{{ __('home.hero_title') }}</h1>
             <p class="hero-copy">
-              Kinahanglan ba nimo ibaligya dayon ang imong yuta? Mopalit mi og
-              yuta sa General Santos City ug paningkamotan namo nga mahimong
-              paspas, sayon, ug hapsay ang proseso sa pagbaligya. Ipaambit lang
-              kanamo ang pipila ka detalye bahin sa imong yuta ug sultihi kami
-              kung kanus-a nimo gusto nga mabaligya kini.
+              {{ __('home.hero_copy') }}
             </p>
             <div class="hero-actions">
               <a class="button button-dark" href="#contact"
-                >Sell Your Land Fast <span class="arrow">↗</span></a
+                >{{ __('home.sell_fast') }} <span class="arrow">↗</span></a
               ><a class="button button-outline" href="#contact"
-                >Contact Us <span class="arrow">→</span></a
+                >{{ __('home.hero_contact') }} <span class="arrow">→</span></a
               >
             </div>
             <div class="hero-note">
-              Kinahanglan ba nimo mabaligya dayon ang imong yuta? Sugdan na
-              nato!
+              {{ __('home.hero_note') }}
             </div>
           </div>
           <div class="hero-stamp">South Cotabato · Philippines</div>
@@ -59,35 +60,24 @@
               src="https://images.openai.com/static-rsc-4/RqQ0RlImTYTHiEQUcSFlUl9sph6ybzc1Pbko8xC9b0QFFQ0HBwi1-rBLIdTcsuIV-Xu8v-gl3u1-sSwbEBUApqaoS_5Bc6vzEwEDGNmLp8S-BY44KcQzb7GiEaeGtLYhHIdO-GoWNMxXqP9HpThM8VizKHZgY957JLWyTCWHudo?purpose=inline"
               alt="Property and land in General Santos City"
               loading="lazy"
-            /><span class="image-caption">Rooted in General Santos City</span>
+            /><span class="image-caption">{{ __('home.about_caption') }}</span>
           </div>
           <div class="intro-copy">
-            <h2>Kinahanglan ba nimo ibaligya dayon ang imong yuta?</h2>
+            <h2>{{ __('home.about_title') }}</h2>
             <p class="lead">
-              Direkta kaming mopalit og yuta gikan sa mga tag-iya nga gustong
-              makabaligya dayon sa paspas ug sayon nga paagi.
+              {{ __('home.about_lead') }}
             </p>
             <p>
-              Mopalit mi og yuta sa General Santos City. Kung gusto nimo nga
-              mabaligya dayon ang imong yuta, kontaka kami ug ihatag ang
-              lokasyon, gidak-on sa lote, ug imong gipangayong presyo. Atong
-              susihon ang mga detalye ug motubag kami kanimo sa labing dali nga
-              panahon.
+              {{ __('home.about_copy_1') }}
             </p>
             <p>
-              Bakante nga lote man, yutang pang-agrikultura, yutang residensyal,
-              o yuta nga nahimutang sa nag-uswag nga lugar, andam kaming
-              makig-istorya sa mga tag-iya sa yuta ug mangita og kasabutan nga
-              mapuslan sa duha ka partido.
+              {{ __('home.about_copy_2') }}
             </p>
             <p>
-              Gihatagan namo og dakong bili ang pagkamatinud-anon, klaro ug
-              diretsong komunikasyon, ug propesyonal nga pagdumala sa tibuok
-              proseso sa pagpalit sa yuta.
+              {{ __('home.about_copy_3') }}
             </p>
             <div class="intro-signoff">
-              Yano ra ang among tumong: himoon nga sayon sabton, kombinyente, ug
-              mapuslanon ang pagbaligya sa imong yuta.
+              {{ __('home.about_signoff') }}
             </div>
           </div>
         </div>
@@ -95,15 +85,10 @@
       <section class="section looking" id="properties">
         <div class="wrap">
           <div class="section-head">
-            <div class="eyebrow">Mopalit Mi og Yuta</div>
-            <h2>
-              Mopalit Mi og Yuta. Kinahanglan Nimo ang Paspas nga Pagbaligya?
-            </h2>
+            <div class="eyebrow">{{ __('home.properties_eyebrow') }}</div>
+            <h2>{{ __('home.properties_title') }}</h2>
             <p>
-              Mopalit mi og bakanteng lote, yutang pang-agrikultura, yutang
-              residensyal, ug yuta nga angay alang sa kalamboan sa General
-              Santos City ug sa mga kasikbit nga lugar. Kinahanglan nimo
-              mabaligya dayon ang imong yuta? Kontaka kami karon!
+              {{ __('home.properties_copy') }}
             </p>
           </div>
           <div class="cards">
@@ -116,11 +101,10 @@
                 />
               </div>
               <div class="card-body">
-                <span class="count">01 / RESIDENSYAL</span>
-                <h3>Mga Lote nga Residensyal</h3>
+                <span class="count">{{ __('home.count_residential') }}</span>
+                <h3>{{ __('home.residential_title') }}</h3>
                 <p>
-                  Mga bakanteng lote ug yutang residensyal nga angay alang sa
-                  umaabot nga pagpabalay ug pagpalambo sa mga propiedad.
+                  {{ __('home.residential_copy') }}
                 </p>
               </div>
             </article>
@@ -133,11 +117,10 @@
                 />
               </div>
               <div class="card-body">
-                <span class="count">02 / AGRICULTURAL</span>
-                <h3>YUTANG PANG-AGRIKULTURA</h3>
+                <span class="count">{{ __('home.count_agricultural') }}</span>
+                <h3>{{ __('home.agricultural_title') }}</h3>
                 <p>
-                  Mga yutang pang-agrikultura ug dagkong luna sa yuta sulod ug
-                  palibot sa General Santos City.
+                  {{ __('home.agricultural_copy') }}
                 </p>
               </div>
             </article>
@@ -150,11 +133,10 @@
                 />
               </div>
               <div class="card-body">
-                <span class="count">03 / YUTANG KOMERSYAL</span>
-                <h3>Yuta nga Angay Alang sa Pagpalambo</h3>
+                <span class="count">{{ __('home.count_commercial') }}</span>
+                <h3>{{ __('home.commercial_title') }}</h3>
                 <p>
-                  Mga yuta nga adunay potensyal alang sa komersyal nga paggamit,
-                  umaabot nga pagpalambo, o dugayng pagpamuhunan.
+                  {{ __('home.commercial_copy') }}
                 </p>
               </div>
             </article>
@@ -167,11 +149,10 @@
                 />
               </div>
               <div class="card-body">
-                <span class="count">04 / OTHER</span>
-                <h3>Mga Lote nga Angay Alang sa Pagpalambo</h3>
+                <span class="count">{{ __('home.count_other') }}</span>
+                <h3>{{ __('home.other_title') }}</h3>
                 <p>
-                  Aduna kay yuta nga wala naapil niini nga mga kategorya?
-                  Ipaambit kanamo ang mga detalye bahin sa imong propiedad.
+                  {{ __('home.other_copy') }}
                 </p>
               </div>
             </article>
@@ -181,46 +162,39 @@
       <section class="section why">
         <div class="wrap">
           <div class="section-head">
-            <div class="eyebrow">Ngano nga Makigtransaksyon Kanamo?</div>
-            <h2>Sayon ug klaro nga paagi sa pagbaligya sa imong yuta.</h2>
+            <div class="eyebrow">{{ __('home.why_eyebrow') }}</div>
+            <h2>{{ __('home.why_title') }}</h2>
             <p>
-              Among tumong nga himoon nga klaro, propesyonal, ug hapsay ang
-              proseso, samtang gikonsiderar ang imong mga tumong ug
-              panginahanglan sa matag lakang.
+              {{ __('home.why_copy') }}
             </p>
           </div>
           <div class="benefits">
             <article class="benefit">
               <span class="benefit-number">01</span>
-              <h3>Direkta Mi nga Mopalit</h3>
+              <h3>{{ __('home.benefit_1_title') }}</h3>
               <p>
-                Direkta kang makig-istorya sa mga mopalit sa imong yuta. Walay
-                proseso sa paglista sa propiedad o tigpataliwala.
+                {{ __('home.benefit_1_copy') }}
               </p>
             </article>
             <article class="benefit">
               <span class="benefit-number">02</span>
-              <h3>Paspas nga Pagsusi</h3>
+              <h3>{{ __('home.benefit_2_title') }}</h3>
               <p>
-                Ihatag lang ang lokasyon sa yuta, gidak-on sa lote, ug imong
-                gitinguhang panahon sa pagbaligya. Among susihon dayon ang mga
-                detalye.
+                {{ __('home.benefit_2_copy') }}
               </p>
             </article>
             <article class="benefit">
               <span class="benefit-number">03</span>
-              <h3>Paspas nga Aksyon</h3>
+              <h3>{{ __('home.benefit_3_title') }}</h3>
               <p>
-                Siguruhon namo nga klaro ang komunikasyon ug paningkamotan namo
-                nga mapadali ang proseso sa pagbaligya kutob sa mahimo.
+                {{ __('home.benefit_3_copy') }}
               </p>
             </article>
             <article class="benefit">
               <span class="benefit-number">04</span>
-              <h3>Yano ug Klaro nga Pagbaligya</h3>
+              <h3>{{ __('home.benefit_4_title') }}</h3>
               <p>
-                Atong hisgotan ang direktang tanyag sa pagpalit ug mga kondisyon
-                nga angay sa imong yuta ug sa imong mga panginahanglan.
+                {{ __('home.benefit_4_copy') }}
               </p>
             </article>
           </div>
@@ -229,20 +203,15 @@
       <section class="section" id="process">
         <div class="wrap process-grid">
           <div class="process-intro">
-            <div class="eyebrow">Giunsa Paglihok ang Proseso</div>
-            <h2>
-              Kinahanglan Nimo Mabaligya Dayon ang Imong Yuta? Sugdi Dinhi.
-            </h2>
+            <div class="eyebrow">{{ __('home.process_eyebrow') }}</div>
+            <h2>{{ __('home.process_title') }}</h2>
             <p>
-              Sugdi pinaagi sa paghatag og pipila ka detalye bahin sa imong
-              yuta. Kung angay kini sa among gipangita, atong hisgotan ang sunod
-              nga mga lakang aron hapsay ug sayon nga mapadayon ang proseso sa
-              pagbaligya.
+              {{ __('home.process_copy') }}
             </p>
             <a
               class="button process-button"
               href="#contact"
-              >Ipaambit Kanamo ang mga Detalye sa Imong Yuta
+              >{{ __('home.process_cta') }}
               <span class="arrow">↗</span></a
             >
           </div>
@@ -250,44 +219,36 @@
             <article class="step">
               <div class="step-no">01</div>
               <div>
-                <h3>Ipadala ang mga Detalye sa Imong Yuta</h3>
+                <h3>{{ __('home.step_1_title') }}</h3>
                 <p>
-                  Ipaambit kanamo ang lokasyon sa imong yuta, gibana-banang
-                  gidak-on niini, ug ang imong gipangayong presyo, kon aduna na.
+                  {{ __('home.step_1_copy') }}
                 </p>
               </div>
             </article>
             <article class="step">
               <div class="step-no">02</div>
               <div>
-                <h3>Paspas nga Pagsusi</h3>
+                <h3>{{ __('home.step_2_title') }}</h3>
                 <p>
-                  Among susihon ang mga impormasyon nga imong gihatag ug
-                  tan-awon kung ang imong yuta angay sa among gipangita nga mga
-                  propiedad nga paliton.
+                  {{ __('home.step_2_copy') }}
                 </p>
               </div>
             </article>
             <article class="step">
               <div class="step-no">03</div>
               <div>
-                <h3>Hisgutan ang Tanyag sa Pagpalit</h3>
+                <h3>{{ __('home.step_3_title') }}</h3>
                 <p>
-                  Kung ang imong yuta angay sa among panginahanglan, atong
-                  hisgotan ang tanyag nga presyo, mga kondisyon, pag-verify sa
-                  mga detalye, ug ang sunod nga mga lakang.
+                  {{ __('home.step_3_copy') }}
                 </p>
               </div>
             </article>
             <article class="step">
               <div class="step-no">04</div>
               <div>
-                <h3>Tapuson ang Transaksyon</h3>
+                <h3>{{ __('home.step_4_title') }}</h3>
                 <p>
-                  Kung magkauyon ang duha ka partido ug makapasar sa legal nga
-                  pagsusi ug beripikasyon sa titulo sa yuta, ipadayon nato ang
-                  gikinahanglang dokumentasyon ug mga pamaagi aron makompleto
-                  ang pagbaligya.
+                  {{ __('home.step_4_copy') }}
                 </p>
               </div>
             </article>
@@ -304,13 +265,10 @@
             />
           </div>
           <div class="local-copy">
-            <div class="eyebrow">Among Lugar nga Ginatutokan</div>
-            <h2>Mopalit Mi og Yuta sa General Santos City</h2>
+            <div class="eyebrow">{{ __('home.local_eyebrow') }}</div>
+            <h2>{{ __('home.local_title') }}</h2>
             <p>
-              Ang among pangunang tumong mao ang pagpalit og yuta ug propiedad
-              sa General Santos City, South Cotabato. Interesado kami sa mga
-              oportunidad sa nagkalainlaing barangay ug kasikbit nga mga lugar,
-              depende sa lokasyon ug sa pagkaangay niini alang sa pagpamuhunan.
+              {{ __('home.local_copy') }}
             </p>
             <span class="local-tag">General Santos City · South Cotabato</span>
           </div>
@@ -319,16 +277,13 @@
       <section class="cta">
         <div class="wrap cta-row">
           <div>
-            <h2>Kinahanglan Nimo Mabaligya Dayon ang Imong Yuta?</h2>
+            <h2>{{ __('home.cta_title') }}</h2>
             <p>
-              Atong hisgotan ang imong propiedad. Ipaambit kanamo ang pipila ka
-              detalye bahin sa imong yuta, ug kontakon ka namo aron hisgotan ang
-              posibilidad sa pagpalit niini. Wala kay obligasyon nga ipadayon
-              ang pagbaligya human sa unang pagsusi.
+              {{ __('home.cta_copy') }}
             </p>
           </div>
-          <a class="button cta-button" href="#contact"
-            >Pagkuha og Paspas nga Tanyag sa Pagpalit sa Yuta
+          <a style="background:#b89e31" class="button cta-button" href="#contact"
+            >{{ __('home.cta_button') }}
 
             <span class="arrow">↗</span></a
           >
@@ -337,22 +292,19 @@
       <section class="section contact" id="contact">
         <div class="wrap contact-grid">
           <div class="contact-copy">
-            <div class="eyebrow">Kontaka Kami</div>
-            <h2>Mopalit Mi og Yuta sa Paspas nga Paagi.</h2>
+            <div class="eyebrow">{{ __('home.contact_eyebrow') }}</div>
+            <h2>{{ __('home.contact_title') }}</h2>
             <p>
-              Kinahanglan nimo mabaligya dayon ang imong yuta sa General Santos
-              City? Ipadala kanamo ang mga detalye sa imong yuta ug ang imong
-              gitinguhang panahon sa pagbaligya. Direkta kaming mopalit og yuta
-              ug motubag kanimo sa labing dali nga panahon.
+              {{ __('home.contact_copy') }}
             </p>
             <div class="contact-detail">
               <div class="detail">
                 <span class="detail-label">Email</span
-                ><span class="detail-value"><a href="mailto:"></a></span>
+                ><span class="detail-value"><a href="mailto:info@greatlandph.com">info@greatlandph.com</a></span>
               </div>
               <div class="detail">
                 <span class="detail-label">Phone</span
-                ><span class="detail-value"></span>
+                ><span class="detail-value">+63952 651 1976</span>
               </div>
               <div class="detail">
                 <span class="detail-label">Location</span
@@ -370,7 +322,7 @@
             enctype="multipart/form-data"
           >
             @csrf
-            <div class="form-title">Seller Property Inquiry</div>
+            <div class="form-title">{{ __('home.form_title') }}</div>
             <p class="step-count" id="step-count" aria-live="polite">
               Step 1 of 5 · Seller Information
             </p>
@@ -677,22 +629,26 @@
         <div class="footer-row">
           <img class="footer-brand" src="{{ asset('images/Great-Logo.png') }}" alt="GREAT Land PH" />
           <nav class="footer-links" aria-label="Footer navigation">
-            <a href="#home">Home</a><a href="#about">About Us</a
-            ><a href="#properties">Properties We Buy</a
-            ><a href="#contact">Contact</a>
+            <a href="#home">{{ __('home.nav_home') }}</a><a href="#about">{{ __('home.nav_footer_about') }}</a
+            ><a href="#properties">{{ __('home.nav_footer_properties') }}</a
+            ><a href="#contact">{{ __('home.nav_footer_contact') }}</a>
           </nav>
         </div>
         <div class="copyright">
-          <span>© 2026 . All rights reserved.</span>
+          <span>{{ __('home.footer_copyright') }}</span>
           <p>
-            Ang tanang pagpalit sa propiedad ipailalom sa pagsusi, pag-verify sa
-            mga dokumento ug titulo sa yuta, ug mga kondisyon nga gikasabutan sa
-            duha ka partido.
+            {{ __('home.footer_disclaimer') }}
           </p>
         </div>
       </div>
     </footer>
     <script>
+      document.getElementById("language-select").addEventListener("change", (event) => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", event.target.value);
+        window.location.assign(url);
+      });
+
       const inquiryForm = document.getElementById("inquiry-form");
       const formSteps = Array.from(inquiryForm.querySelectorAll(".form-step"));
       const stepCount = document.getElementById("step-count");
