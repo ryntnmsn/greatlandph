@@ -32,7 +32,7 @@
       <section class="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <h2 class="text-lg font-bold">Website</h2>
         <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Your admin access is active. Use the link below to view the public website.</p>
-        <a href="{{ route('home') }}" class="mt-5 inline-flex rounded-lg bg-[#12112f] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#29284d]">View public website <span class="ml-2" aria-hidden="true">↗</span></a>
+        <a href="{{ route('home') }}" class="mt-5 inline-flex rounded-lg bg-[#12112f] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#29284d]">View public website</a>
       </section>
 
       <section class="mt-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">

@@ -138,10 +138,6 @@
         background: white;
         color: var(--green);
     }
-    .arrow {
-        font-size: 17px;
-        line-height: 1;
-    }
     header {
         position: absolute;
         z-index: 2;
@@ -220,10 +216,8 @@
     .language-picker select {
         min-height: 40px;
         padding: 0 28px 0 12px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 0;
-        background: #12112f;
-        color: white;
+        color: white !important;
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
@@ -532,7 +526,6 @@
     .cta .button {
         background: var(--green);
         color: white;
-        white-space: nowrap;
     }
     .contact {
         background: #f9f8f3;
@@ -825,6 +818,9 @@
         }
     }
     @media (max-width: 650px) {
+        .ben-3 {
+            padding-left: 0 !important;
+        }
         .wrap {
             width: min(100% - 36px, 520px);
         }

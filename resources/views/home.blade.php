@@ -26,7 +26,7 @@
               <option style="color:#000" value="en" @selected(app()->getLocale() === 'en')>English</option>
             </select>
           </label>
-          <a class="nav-cta" href="#contact">{{ __('home.nav_contact') }} <span class="arrow">↗</span></a>
+          <a class="nav-cta" href="#contact">{{ __('home.nav_contact') }}</a>
           
         </nav>
       </div>
@@ -42,9 +42,9 @@
             </p>
             <div class="hero-actions">
               <a class="button button-dark" href="#contact"
-                >{{ __('home.sell_fast') }} <span class="arrow">↗</span></a
+                >{{ __('home.sell_fast') }}</a
               ><a class="button button-outline" href="#contact"
-                >{{ __('home.hero_contact') }} <span class="arrow">→</span></a
+                >{{ __('home.hero_contact') }}</a
               >
             </div>
             <div class="hero-note">
@@ -184,7 +184,7 @@
                 {{ __('home.benefit_2_copy') }}
               </p>
             </article>
-            <article class="benefit">
+            <article class="benefit ben-3">
               <span class="benefit-number">03</span>
               <h3>{{ __('home.benefit_3_title') }}</h3>
               <p>
@@ -213,7 +213,7 @@
               class="button process-button"
               href="#contact"
               >{{ __('home.process_cta') }}
-              <span class="arrow">↗</span></a
+              </a
             >
           </div>
           <div class="steps">
@@ -286,7 +286,7 @@
           <a style="background:#b89e31" class="button cta-button" href="#contact"
             >{{ __('home.cta_button') }}
 
-            <span class="arrow">↗</span></a
+            </a
           >
         </div>
       </section>
@@ -604,10 +604,10 @@
                 Previous
               </button>
               <button class="button next-step" type="button">
-                Next <span class="arrow">→</span>
+                Next
               </button>
               <button class="button submit-step" type="submit" hidden>
-                Submit Property Inquiry <span class="arrow">↗</span>
+                Submit Property Inquiry
               </button>
             </div>
             <p class="form-note">
@@ -727,7 +727,7 @@
           inquiryStatus.hidden = false;
         } finally {
           submitButton.disabled = false;
-          submitButton.innerHTML = 'Submit Property Inquiry <span class="arrow">↗</span>';
+          submitButton.textContent = 'Submit Property Inquiry';
         }
       });
     </script>
