@@ -104,7 +104,7 @@
         margin-bottom: 17px;
     }
     .section-head p {
-        max-width: 620px;
+        max-width: 100%;
         color: var(--muted);
         font-size: 16px;
     }
@@ -144,6 +144,10 @@
         inset: 0 0 auto;
         color: white;
         background-color: #13132ec2;
+    }
+    .additional-details-page header {
+        position: relative;
+        background: var(--green);
     }
     .nav {
         height: 86px;
@@ -721,6 +725,18 @@
     .field textarea {
         min-height: 105px;
         resize: vertical;
+    }
+    .field .confirmation-list .option {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .field .confirmation-list .option input[type="checkbox"] {
+        flex: 0 0 16px;
+        width: 16px;
+        min-width: 16px;
+        height: 16px;
+        margin: 2px 0 0;
+        padding: 0;
     }
     .form-card button {
         margin-top: 19px;

@@ -15,7 +15,7 @@
           <img src="{{ asset('images/Great-Logo.png') }}" alt="GREAT Land PH" class="h-auto w-44 object-contain" />
         </a>
         <div class="flex items-center gap-5">
-          <span class="hidden text-sm text-slate-600 sm:inline">{{ auth()->user()->name }}</span>
+          <a href="{{ route('admin.property-evaluations.index') }}" class="text-sm font-semibold text-[#12112f] hover:underline">Property Evaluation</a>
           <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
             <button type="submit" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold transition bg-red-800">Sign out</button>
@@ -28,6 +28,10 @@
       <p class="mb-2 text-xs font-bold uppercase tracking-[.2em] text-[#817025]">GREAT Land PH</p>
       <h1 class="text-3xl font-bold tracking-tight sm:text-2xl">Admin dashboard</h1>
       <p class="mt-3 text-slate-600">Welcome, {{ auth()->user()->name }}. You are signed in as an administrator.</p>
+
+      @if (session('status'))
+        <p class="mt-5 rounded-lg bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800" role="status">{{ session('status') }}</p>
+      @endif
 
       <section class="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <h2 class="text-lg font-bold">Website</h2>
@@ -97,6 +101,11 @@
                           <div><dt class="font-semibold text-slate-800">Confirmations</dt><dd>Accurate: {{ $inquiry->accurate ? 'Yes' : 'No' }} · Authorized: {{ $inquiry->authorized ? 'Yes' : 'No' }} · Contact consent: {{ $inquiry->consent ? 'Yes' : 'No' }}</dd></div>
                         </dl>
                       </details>
+                      <form class="mt-4" method="POST" action="{{ route('admin.inquiries.destroy', $inquiry) }}" onsubmit="return confirm('Delete this inquiry and its uploaded photos? This cannot be undone.');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-700 transition hover:bg-red-50">Delete inquiry</button>
+                      </form>
                     </td>
                   </tr>
                 @endforeach
