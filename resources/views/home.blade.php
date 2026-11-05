@@ -305,7 +305,8 @@
               </div>
               <div class="detail">
                 <span class="detail-label">Phone</span
-                ><span class="detail-value">+63952 651 1976</span>
+                ><span class="detail-value">TM: 0955 039 0593</span><br>
+                <span class="detail-value">TNT: 0910 285 1770</span>
               </div>
               <div class="detail">
                 <span class="detail-label">Location</span
